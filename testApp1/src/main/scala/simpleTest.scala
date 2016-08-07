@@ -4,7 +4,7 @@ import org.apache.spark.SparkConf
 
 object TestApp {
 	def main(args: Array[String]) {
-		val logFile = "~/spark-2.0.0/README.md"
+		val logFile = "/home/ubuntu/spark-2.0.0/README.md"
 		val conf = new SparkConf().setAppName("Test Spark App")
 		val sc = new SparkContext(conf)
 		val logData = sc.textFile(logFile, 2).cache()
