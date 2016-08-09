@@ -1,6 +1,7 @@
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
+import java.lang.Math
 
 object TestApp {
 	def main(args: Array[String]) {
@@ -14,12 +15,11 @@ object TestApp {
 		println("Lines with a: %s, lines with b: %s".format(numAs, numBs))
 		
 		val wordCount = logFile.map(line => line.split(" ").size)
-		wordCount = wordCount.reduce((a, b) => if(a>b) a else b)
+		wordCount = wordCount.reduce((a, b) => Math.max(a, b))
 		
 		println("Max word count of line: %s".format(wordCount)))
+		
+		val allWordCount = logFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
+		println("All word Count of document: %s".format(allWordCount))
 	}
-}
-
-object TestApp2 {
-
 }
