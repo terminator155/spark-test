@@ -12,6 +12,11 @@ object TestApp {
 		val numBs = logData.filter(line => line.contains("b")).count()
 		
 		println("Lines with a: %s, lines with b: %s".format(numAs, numBs))
+		
+		val wordCount = logFile.map(line => line.split(" ").size)
+		wordCount = wordCount.reduce((a, b) => if(a>b) a else b)
+		
+		println("Max word count of line: %s".format(wordCount)))
 	}
 }
 
