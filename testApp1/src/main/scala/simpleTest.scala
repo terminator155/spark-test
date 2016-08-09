@@ -14,3 +14,7 @@ object TestApp {
 		println("Lines with a: %s, lines with b: %s".format(numAs, numBs))
 	}
 }
+
+object TestApp2 {
+
+}
