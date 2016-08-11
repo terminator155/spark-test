@@ -20,6 +20,9 @@ object TestApp {
 		println("Max word count of line: %s".format(wordCount)))
 		
 		val allWordCount = logFile.flatMap(line => line.split(" ")).map(word => (word, 1)).reduceByKey((a, b) => a + b)
-		println("All word Count of document: %s".format(allWordCount))
+		val wordsSet = allWordCount.collect()
+		/**
+		  * println("All word Count of document: %s".format(allWordCount))
+		  */
 	}
 }
